@@ -1,0 +1,9 @@
+@theme {
+  /* remove the default tailwind colors */
+  --color-*: initial;
+
+  --font-*: initial;
+  --font-display: 'Fraunces Variable', Georgia, serif;
+  --font-body: 'Newsreader Variable', Georgia, serif;
+  --font-ui: 'Instrument Sans Variable', system-ui, sans-serif;
+}

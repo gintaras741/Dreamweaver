@@ -26,9 +26,23 @@ The system is built around three hierarchically related domain objects:
 
 | Layer | Technology |
 |---|---|
-| Frontend | React + TypeScript |
+| Frontend | React 19 + TypeScript 7, Vite 8, Tailwind CSS v4, Radix UI, Tiptap v3, React Flow |
 | API Client | Orval + TanStack Query |
-| Routing | React Router v6 |
-| Backend | ASP.NET Core |
-| ORM | Entity Framework Core |
-| Database | PostgreSQL 16 |
+| Routing | React Router v8 |
+| Backend | ASP.NET Core (.NET 10 LTS, controllers), FluentValidation, Serilog |
+| Auth | ASP.NET Core Identity + JWT bearer tokens with rotating refresh tokens |
+| ORM | Entity Framework Core 10 + Npgsql |
+| Database | PostgreSQL 18 |
+| API docs | OpenAPI + Scalar |
+| Tooling | Docker Compose, GNU make, Newman, oxlint, Prettier, xUnit v3 + Testcontainers |
+
+## Running locally
+
+Prerequisites: .NET 10 SDK, Node.js 24+, Docker Desktop, GNU make, and Git Bash (Windows).
+
+```bash
+make setup     # restore packages and tools, create .env from .env.example
+make dev       # PostgreSQL in Docker, then the API (https://localhost:5001) and Vite (http://localhost:5173)
+make test      # backend tests + frontend typecheck and lint
+make help      # list every target
+```

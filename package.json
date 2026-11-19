@@ -1,0 +1,11 @@
+{
+  "name": "dreamweaver",
+  "private": true,
+  "engines": {
+    "node": ">=24"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.7",
+    "newman": "^6.2.3"
+  }
+}

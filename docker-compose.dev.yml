@@ -1,0 +1,24 @@
+# only the database, api and frontend run locally
+name: dreamweaver-dev
+
+services:
+  db:
+    image: postgres:18
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-dreamweaver}
+      POSTGRES_USER: ${POSTGRES_USER:-dreamweaver}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-dreamweaver_dev_password}
+    ports:
+      - '${POSTGRES_PORT:-5432}:5432'
+    volumes:
+      # postgres 18 changed the data path, mount the parent folder
+      - pgdata:/var/lib/postgresql
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  pgdata:
